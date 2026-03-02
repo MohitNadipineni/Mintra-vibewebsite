@@ -1,3 +1,5 @@
+'use client';
+
 interface DealCardProps {
   brand: string;
   title: string;
@@ -13,6 +15,11 @@ export default function DealCard({
   originalPrice,
   discountPct,
 }: DealCardProps) {
+  const handleAdd = () => {
+    // TODO: replace alert with Supabase insert into orders table
+    alert('Added to Bag!');
+  };
+
   return (
     <div className="relative border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
       {/* placeholder image from Unsplash */}
@@ -33,6 +40,12 @@ export default function DealCard({
             {originalPrice}
           </span>
         </div>
+        <button
+          onClick={handleAdd}
+          className="mt-4 w-full bg-pink text-white py-2 rounded hover:bg-pink/90 transition"
+        >
+          Add to Bag
+        </button>
       </div>
       <div className="absolute top-2 right-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded-full">
         {discountPct} off

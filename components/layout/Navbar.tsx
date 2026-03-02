@@ -29,9 +29,15 @@ export default function Navbar() {
 
           {/* Icons */}
           <div className="flex items-center space-x-4">
-            <User className="h-6 w-6 cursor-pointer hover:text-pink" />
-            <Heart className="h-6 w-6 cursor-pointer hover:text-pink" />
-            <ShoppingBag className="h-6 w-6 cursor-pointer hover:text-pink" />
+            <Link href="/profile">
+              <User className="h-6 w-6 cursor-pointer hover:text-pink" />
+            </Link>
+            <Link href="/wishlist">
+              <Heart className="h-6 w-6 cursor-pointer hover:text-pink" />
+            </Link>
+            <Link href="/cart">
+              <ShoppingBag className="h-6 w-6 cursor-pointer hover:text-pink" />
+            </Link>
           </div>
         </div>
       </div>
@@ -40,11 +46,17 @@ export default function Navbar() {
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ul className="flex space-x-6 overflow-x-auto py-2">
-            {['Men', 'Women', 'Kids', 'Home & Living', 'Beauty'].map((cat) => (
-              <li key={cat} className="whitespace-nowrap font-medium text-gray-700 hover:text-pink">
-                <Link href="#" className="hover:text-pink">{cat}</Link>
-              </li>
-            ))}
+            {['Men', 'Women', 'Kids', 'Home & Living', 'Beauty'].map((cat) => {
+              let href = '#';
+              if (cat === 'Men') href = '/category/men';
+              if (cat === 'Women') href = '/category/women';
+              if (cat === 'Kids') href = '/category/kids';
+              return (
+                <li key={cat} className="whitespace-nowrap font-medium text-gray-700 hover:text-pink">
+                  <Link href={href} className="hover:text-pink">{cat}</Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
